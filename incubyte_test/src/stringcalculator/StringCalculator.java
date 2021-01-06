@@ -1,8 +1,11 @@
 package stringcalculator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StringCalculator {
 	
-	public static int add(String str) {
+	public static int add(String str) throws Exception {
 		if(str.length() == 0) {
 			return 0;
 		}
@@ -29,10 +32,17 @@ public class StringCalculator {
 		}
 	}
 	
-	public static int sumFunction(String ...nums) {
+	public static int sumFunction(String ...nums) throws Exception {
 		int sum = 0;
+		String negatives = "";
 		for(int i = 0; i < nums.length; i++) {
+			if (Integer.parseInt(nums[i]) < 0) {
+				negatives = negatives + nums[i];
+			}
 			sum += Integer.parseInt(nums[i]);
+		}
+		if (!negatives.isEmpty()) {
+			throw new Exception("Negatives not allowed: " + negatives);
 		}
 		return sum;
 	}
