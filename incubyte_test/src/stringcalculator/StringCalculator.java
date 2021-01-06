@@ -10,10 +10,21 @@ public class StringCalculator {
 			return Integer.parseInt(str);
 		}
 		else {
-			if(str.contains("\n")) {
-				str = str.replaceAll("\n", ","); //removes new line operator
+			String delimiter = ",";
+			//If condition to identify a new delimiter
+			if(str.contains("//")) {
+				int delimiterIndex = str.indexOf("//") + 2;
+				delimiter = Character.toString(str.charAt(delimiterIndex));
+				str = str.replaceAll("//" + delimiter, "");
 			}
-			String[] nums = str.split(",");
+			if(str.contains("\n")) {
+				str = str.replaceAll("\n", delimiter); //removes new line operator
+			}
+			//This if condition removes any delimiter in the start of the string (if any)
+			if(str.startsWith(delimiter)) {
+				str = str.replaceFirst(delimiter, "");
+			}
+			String[] nums = str.split(delimiter);
 			return sumFunction(nums);
 		}
 	}
