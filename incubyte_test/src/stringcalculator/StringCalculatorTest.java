@@ -20,5 +20,10 @@ public class StringCalculatorTest {
 	public void returnSumOnTwoNumbers() {
 		assertEquals(3, StringCalculator.add("1,2"));
 	}
+	
+	@Test
+	public void returnSumOnMultipleNumbers() {
+		assertEquals(10, StringCalculator.add("1,2,3,4"));
+	}
 
 }

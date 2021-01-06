@@ -11,7 +11,15 @@ public class StringCalculator {
 		}
 		else {
 			String[] nums = str.split(",");
-			return Integer.parseInt(nums[0]) + Integer.parseInt(nums[1]);
+			return sumFunction(nums);
 		}
+	}
+	
+	public static int sumFunction(String ...nums) {
+		int sum = 0;
+		for(int i = 0; i < nums.length; i++) {
+			sum += Integer.parseInt(nums[i]);
+		}
+		return sum;
 	}
 }
