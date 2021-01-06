@@ -1,11 +1,9 @@
 package stringcalculator;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class StringCalculator {
 	
 	public static int add(String str) throws Exception {
+		String[] operators = new String[] {"-","\\+","/","\\*","x","\\^","X"};
 		if(str.length() == 0) {
 			return 0;
 		}
@@ -16,9 +14,15 @@ public class StringCalculator {
 			String delimiter = ",";
 			//If condition to identify a new delimiter
 			if(str.contains("//")) {
+				//Check for delimiter with more than one character
+				if(str.contains("[")) {
+					int endIndex = str.indexOf("]");
+					str = str.substring(endIndex+1).replaceAll("[^0-9]+", ",");
+ 				} else {
 				int delimiterIndex = str.indexOf("//") + 2;
 				delimiter = Character.toString(str.charAt(delimiterIndex));
 				str = str.replaceAll("//" + delimiter, "");
+ 				}
 			}
 			if(str.contains("\n")) {
 				str = str.replaceAll("\n", delimiter); //removes new line operator
@@ -27,7 +31,6 @@ public class StringCalculator {
 			if(str.startsWith(delimiter)) {
 				str = str.replaceFirst(delimiter, "");
 			}
-			System.out.println(str);
 			String[] nums = str.split(delimiter);
 			return sumFunction(nums);
 		}
@@ -37,13 +40,11 @@ public class StringCalculator {
 		int sum = 0;
 		String negatives = "";
 		for(int i = 0; i < nums.length; i++) {
-			System.out.println("Inside for loop");
 			if (Integer.parseInt(nums[i]) < 0) {
 				negatives = negatives + nums[i] + " ";
 			}
-			System.out.println(nums[i]);
+		    //ignores numbers over 1000
 			if (Integer.parseInt(nums[i]) > 1000) {
-				System.out.println("Inside if condition");
 				continue;
 			}
 			sum += Integer.parseInt(nums[i]);
@@ -51,7 +52,6 @@ public class StringCalculator {
 		if (!negatives.isEmpty()) {
 			throw new Exception("Negatives not allowed: " + negatives);
 		}
-		System.out.println("Sum " + sum);
 		return sum;
 	}
 }

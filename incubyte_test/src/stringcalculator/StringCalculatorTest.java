@@ -60,5 +60,10 @@ public class StringCalculatorTest {
 	public void returnNumbersGreaterThanThousandNotAllowed() throws Exception{
 		assertEquals(3, StringCalculator.add("2,1,2000"));
 	}
+	
+	@Test
+	public void returnAnyLengthDelimiterAllowed() throws Exception{
+		assertEquals(6, StringCalculator.add("//[***]\n1***2***3"));
+	}
 
 }
