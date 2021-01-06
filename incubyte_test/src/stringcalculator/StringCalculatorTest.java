@@ -23,7 +23,7 @@ public class StringCalculatorTest {
 	
 	@Test
 	public void returnSumOnMultipleNumbers() throws Exception {
-		assertEquals(10, StringCalculator.add("1,2,3,4"));
+		assertEquals(415, StringCalculator.add("10,2,3,400"));
 	}
 	
 	@Test
@@ -49,11 +49,16 @@ public class StringCalculatorTest {
 	@Test
 	public void returnMultipleNegativeNotAllowed() {
 		try {
-			StringCalculator.add("-1, -3, -6, 7, 8, 10");
+			StringCalculator.add("-1,-3,-6,7,8,10");
 			fail("There should be an exception");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@Test
+	public void returnNumbersGreaterThanThousandNotAllowed() throws Exception{
+		assertEquals(3, StringCalculator.add("2,1,2000"));
 	}
 
 }

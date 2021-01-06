@@ -27,6 +27,7 @@ public class StringCalculator {
 			if(str.startsWith(delimiter)) {
 				str = str.replaceFirst(delimiter, "");
 			}
+			System.out.println(str);
 			String[] nums = str.split(delimiter);
 			return sumFunction(nums);
 		}
@@ -36,14 +37,21 @@ public class StringCalculator {
 		int sum = 0;
 		String negatives = "";
 		for(int i = 0; i < nums.length; i++) {
+			System.out.println("Inside for loop");
 			if (Integer.parseInt(nums[i]) < 0) {
-				negatives = negatives + nums[i];
+				negatives = negatives + nums[i] + " ";
+			}
+			System.out.println(nums[i]);
+			if (Integer.parseInt(nums[i]) > 1000) {
+				System.out.println("Inside if condition");
+				continue;
 			}
 			sum += Integer.parseInt(nums[i]);
 		}
 		if (!negatives.isEmpty()) {
 			throw new Exception("Negatives not allowed: " + negatives);
 		}
+		System.out.println("Sum " + sum);
 		return sum;
 	}
 }
