@@ -10,6 +10,9 @@ public class StringCalculator {
 			return Integer.parseInt(str);
 		}
 		else {
+			if(str.contains("\n")) {
+				str = str.replaceAll("\n", ","); //removes new line operator
+			}
 			String[] nums = str.split(",");
 			return sumFunction(nums);
 		}

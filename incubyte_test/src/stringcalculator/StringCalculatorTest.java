@@ -25,5 +25,10 @@ public class StringCalculatorTest {
 	public void returnSumOnMultipleNumbers() {
 		assertEquals(10, StringCalculator.add("1,2,3,4"));
 	}
+	
+	@Test
+	public void returnSumWhenNewLineOperatorExists() {
+		assertEquals(6, StringCalculator.add("1\n2,3"));
+	}
 
 }
