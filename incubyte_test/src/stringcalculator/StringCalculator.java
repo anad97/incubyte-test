@@ -3,7 +3,6 @@ package stringcalculator;
 public class StringCalculator {
 	
 	public static int add(String str) throws Exception {
-		String[] operators = new String[] {"-","\\+","/","\\*","x","\\^","X"};
 		if(str.length() == 0) {
 			return 0;
 		}
