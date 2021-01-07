@@ -75,5 +75,20 @@ public class StringCalculatorTest {
 	public void returnMutipleMultiLengthDelimitersAllowed() throws Exception{
 		assertEquals(10, StringCalculator.add("//[***][%%]\n1***3%%6"));
 	}
+	
+	@Test
+	public void onlyDelimiter() throws Exception{
+		assertEquals(0, StringCalculator.add(","));
+	}
+	
+	@Test
+	public void chainedDelimiterTests() throws Exception{
+		assertEquals(31, StringCalculator.add(",,1,2,6,7,,,10\n,5,,"));
+	}
+	
+	@Test
+	public void incorrectInputTest() throws Exception{
+		assertEquals(1, StringCalculator.add("1,\n"));
+	}
 
 }
