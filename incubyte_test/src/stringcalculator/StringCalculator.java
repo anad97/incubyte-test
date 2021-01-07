@@ -24,7 +24,6 @@ public class StringCalculator {
 		 }
 		 for(int i = 0; i < allMatches.size(); i++) {
 			 int currNumber = Integer.parseInt(allMatches.get(i));
-			 System.out.print(allMatches.get(i) + " ");
 			 if (currNumber <= 1000 && currNumber > 0) {
 				 sum += currNumber;
 			 } 
@@ -36,7 +35,6 @@ public class StringCalculator {
 		 if (!negatives.isEmpty()) {
 			 throw new NumberFormatException("Negatives not allowed: " + negatives);
 		 }
-		 System.out.println("");
 		return sum;
 	}
 	
@@ -70,7 +68,6 @@ public class StringCalculator {
 			str = str.replaceFirst(delimiter, "");
 		}
 		str = str.trim();
-		System.out.println("String: " + str);
 		String[] nums = str.split(delimiter);
 		return sumFunction(nums);
 	}
@@ -83,7 +80,6 @@ public class StringCalculator {
 			if (nums[i] == null) {
 				continue;
 			}
-			System.out.println("Numbers: " + nums[i]);
 			if (Integer.parseInt(nums[i]) < 0) {
 				negatives = negatives + nums[i] + " ";
 			}
